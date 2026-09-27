@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خارطة طريق PWN — أحمد شعبان</title>
+<style>
+  :root{
+    --bg:#0a0e17;
+    --panel:#111827;
+    --panel-2:#0f1522;
+    --border:#1f2b3e;
+    --ink:#e6edf7;
+    --muted:#8ea0bd;
+    --accent:#22d3ee;
+    --accent-2:#38bdf8;
+    --green:#34d399;
+    --amber:#fbbf24;
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:radial-gradient(1200px 600px at 80% -10%,rgba(34,211,238,.08),transparent 60%),
+               radial-gradient(900px 500px at -10% 10%,rgba(56,189,248,.06),transparent 55%),
+               var(--bg);
+    color:var(--ink);
+    font-family:"Segoe UI",Tahoma,system-ui,-apple-system,"Noto Naskh Arabic",sans-serif;
+    line-height:1.9;
+    min-height:100vh;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:28px 18px 90px}
+
+  /* Header */
+  header{
+    background:linear-gradient(135deg,#0d1424,#0a1120);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:26px 26px 22px;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+  }
+  header::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,transparent,rgba(34,211,238,.10),transparent);
+    transform:translateX(-100%);animation:sweep 6s ease-in-out infinite;
+  }
+  @keyframes sweep{0%,100%{transform:translateX(-100%)}50%{transform:translateX(100%)}}
+  .eyebrow{color:var(--accent);font-size:13px;letter-spacing:1px;font-weight:700;margin:0 0 6px}
+  h1{margin:0;font-size:27px;font-weight:800;letter-spacing:.3px}
+  .sub{color:var(--muted);margin:8px 0 0;font-size:15px;max-width:640px}
+
+  /* Progress */
+  .progress-card{
+    margin-top:18px;background:var(--panel-2);border:1px solid var(--border);
+    border-radius:14px;padding:16px 18px;
+  }
+  .progress-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+  .progress-top strong{font-size:16px}
+  .progress-pct{color:var(--accent);font-weight:800;font-size:22px}
+  .bar{height:12px;background:#0a111d;border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-top:12px}
+  .bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent-2),var(--accent),var(--green));
+    border-radius:20px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+  .progress-note{color:var(--muted);font-size:13px;margin-top:10px}
+
+  /* Intro / general info */
+  .intro{margin-top:26px}
+  .intro-title{font-size:15px;font-weight:800;color:var(--accent);margin:0 0 4px;display:flex;align-items:center;gap:9px}
+  .intro-title .ic{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:14px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#04121a}
+  .intro-lead{color:var(--muted);font-size:13px;margin:0 0 14px}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:680px){.cards{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:13px;padding:15px 16px}
+  .card.full{grid-column:1 / -1}
+  .card h3{margin:0 0 8px;font-size:14.5px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:8px}
+  .card h3 .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex:0 0 auto}
+  .card p{margin:0 0 8px;font-size:13.5px;color:#cfe0f5}
+  .card p:last-child{margin-bottom:0}
+  .card .lead-term{color:var(--accent);font-weight:700}
+  .scen{border-top:1px dashed var(--border);padding:9px 0 2px}
+  .scen:first-of-type{border-top:none;padding-top:2px}
+  .scen b{color:var(--accent-2)}
+  .scen span{color:var(--muted);font-size:13px}
+  .tip{display:flex;gap:10px;padding:8px 0;align-items:flex-start;font-size:13.5px;color:#cfe0f5}
+  .tip .n{flex:0 0 auto;color:var(--amber);font-weight:800}
+  .boxrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .chip{font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:7px;border:1px solid var(--border)}
+  .chip.black{background:rgba(248,113,113,.12);color:#fca5a5;border-color:rgba(248,113,113,.3)}
+  .chip.gray{background:rgba(251,191,36,.12);color:#fcd34d;border-color:rgba(251,191,36,.3)}
+  .chip.white{background:rgba(52,211,153,.12);color:#6ee7b7;border-color:rgba(52,211,153,.3)}
+
+  /* Phase */
+  .phase{margin-top:26px;background:var(--panel);border:1px solid var(--border);
+    border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+  .phase-head{display:flex;align-items:center;gap:14px;padding:18px 20px;cursor:pointer;user-select:none;
+    background:linear-gradient(180deg,rgba(255,255,255,.02),transparent)}
+  .phase-num{flex:0 0 auto;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;
+    font-weight:800;font-size:18px;color:#04121a;background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+  .phase-titles{flex:1 1 auto;min-width:0}
+  .phase-titles h2{margin:0;font-size:18px;font-weight:800}
+  .phase-titles .meta{color:var(--muted);font-size:13px;margin-top:3px}
+  .phase-badge{flex:0 0 auto;font-size:12px;font-weight:700;color:var(--muted);
+    background:#0a111d;border:1px solid var(--border);border-radius:20px;padding:5px 12px;white-space:nowrap}
+  .phase-badge.done{color:#04121a;background:var(--green);border-color:var(--green)}
+  .chev{flex:0 0 auto;color:var(--muted);transition:transform .3s;font-size:14px}
+  .phase.collapsed .chev{transform:rotate(-90deg)}
+  .phase-body{padding:4px 20px 20px}
+  .phase.collapsed .phase-body{display:none}
+  .goal{background:var(--panel-2);border:1px solid var(--border);border-right:3px solid var(--accent);
+    border-radius:10px;padding:11px 14px;margin:6px 0 16px;font-size:14px;color:#cfe0f5}
+  .goal b{color:var(--accent)}
+
+  /* subsection */
+  .sub-title{font-size:14px;font-weight:800;color:var(--accent-2);margin:16px 0 8px;
+    display:flex;align-items:center;gap:8px}
+  .sub-title::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent-2)}
+
+  /* checklist item */
+  .item{display:flex;gap:12px;padding:11px 12px;border:1px solid var(--border);border-radius:11px;
+    background:var(--panel-2);margin:8px 0;transition:.2s;align-items:flex-start}
+  .item:hover{border-color:#2b3d59}
+  .item.checked{opacity:.62;background:#0c1420;border-color:#16311f}
+  .item.checked .txt{text-decoration:line-through;text-decoration-color:var(--green)}
+  .cbox{flex:0 0 auto;width:22px;height:22px;border:2px solid #33465f;border-radius:6px;cursor:pointer;
+    display:grid;place-items:center;margin-top:3px;transition:.2s;background:#0a111d}
+  .cbox:hover{border-color:var(--accent)}
+  .item.checked .cbox{background:var(--green);border-color:var(--green)}
+  .cbox svg{width:14px;height:14px;opacity:0;transform:scale(.5);transition:.2s}
+  .item.checked .cbox svg{opacity:1;transform:scale(1)}
+  .body-txt{flex:1 1 auto;min-width:0}
+  .txt{font-size:14.5px;color:var(--ink)}
+  .hint{font-size:13px;color:var(--muted);margin-top:4px}
+  .term{color:var(--accent);font-weight:700}
+  .item a{color:var(--accent-2);text-decoration:none;border-bottom:1px dotted var(--accent-2)}
+  .item a:hover{color:var(--accent)}
+  .tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;margin-inline-start:6px;
+    background:rgba(34,211,238,.12);color:var(--accent);border:1px solid rgba(34,211,238,.25)}
+  .tag.milestone{background:rgba(251,191,36,.12);color:var(--amber);border-color:rgba(251,191,36,.3)}
+
+  /* tools / refs box */
+  .box{background:#0c1523;border:1px solid var(--border);border-radius:11px;padding:12px 14px;margin:10px 0}
+  .box h4{margin:0 0 8px;font-size:13px;color:var(--amber);font-weight:800}
+  .box ul{margin:0;padding-inline-start:18px}
+  .box li{font-size:13.5px;margin:4px 0;color:#cfe0f5}
+  .box code{background:#050a12;border:1px solid var(--border);border-radius:5px;padding:1px 6px;
+    font-family:Consolas,monospace;color:var(--green);font-size:12.5px;direction:ltr;display:inline-block}
+
+  /* resources box */
+  .res{margin:16px 0 4px;background:linear-gradient(180deg,rgba(56,189,248,.05),transparent);
+    border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+  .res-head{font-size:13.5px;font-weight:800;color:var(--accent);margin:0 0 4px;display:flex;align-items:center;gap:8px}
+  .res-head::before{content:"📚"}
+  .res-sub{color:var(--muted);font-size:12px;margin:0 0 10px}
+  .res-item{border-top:1px dashed var(--border);padding:10px 0 2px}
+  .res-item:first-of-type{border-top:none;padding-top:2px}
+  .res-name{font-size:14px;font-weight:700;color:var(--ink)}
+  .res-name .type{font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:5px;margin-inline-end:7px;vertical-align:middle}
+  .type.video{background:rgba(248,113,113,.15);color:#fca5a5;border:1px solid rgba(248,113,113,.3)}
+  .type.platform{background:rgba(52,211,153,.15);color:#6ee7b7;border:1px solid rgba(52,211,153,.3)}
+  .type.book{background:rgba(251,191,36,.15);color:#fcd34d;border:1px solid rgba(251,191,36,.3)}
+  .type.site{background:rgba(56,189,248,.15);color:#7dd3fc;border:1px solid rgba(56,189,248,.3)}
+  .res-name a{color:inherit;text-decoration:none;border-bottom:1px dotted var(--accent-2)}
+  .res-name a:hover{color:var(--accent)}
+  .res-focus{font-size:13px;color:var(--muted);margin-top:4px}
+  .res-focus b{color:var(--accent-2)}
+
+  /* controls */
+  .controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px;justify-content:center}
+  .btn{background:var(--panel);border:1px solid var(--border);color:var(--muted);
+    border-radius:10px;padding:9px 16px;font-size:13px;cursor:pointer;font-family:inherit;transition:.2s}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn.danger:hover{border-color:#f87171;color:#f87171}
+
+  footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:30px;line-height:1.8}
+  footer b{color:var(--accent)}
+  .saved-flash{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);
+    background:var(--green);color:#04121a;font-weight:700;font-size:13px;padding:9px 18px;border-radius:10px;
+    opacity:0;transition:.3s;pointer-events:none;z-index:50}
+  .saved-flash.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">CYBERPEDIA · مسار التخصّص</p>
+    <h1>خارطة طريق تخصّص الـ PWN — Binary Exploitation</h1>
+    <p class="sub">خطة عملية ومنهجية مصمّمة لأحمد شعبان. طبّق البنود بالترتيب، وضع علامة ✓ على كل خطوة تنجزها. تقدّمك يُحفظ تلقائياً في متصفّحك — أغلق الصفحة وعُد إليها في أي وقت وستجد ما أنجزته كما هو. كل مرحلة تنتهي بقسم <b style="color:var(--accent)">المصادر والمراجع</b> يحدّد لك ماذا تركّز عليه في كل كورس أو كتاب أو سلسلة فيديو.</p>
+
+    <div class="progress-card">
+      <div class="progress-top">
+        <strong>إجمالي التقدّم</strong>
+        <span class="progress-pct" id="pct">0%</span>
+      </div>
+      <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+      <p class="progress-note" id="progNote">أنجزت 0 من 0 خطوة.</p>
+    </div>
+  </header>
+
+  <!-- ==== قسم تمهيدي: معلومات عامة ونصائح ==== -->
+  <section class="intro">
+    <div class="intro-title"><span class="ic">i</span> قبل أن تبدأ — معلومات عامة عن المجال</div>
+    <p class="intro-lead">اقرأ هذا القسم مرّة واحدة قبل الدخول في المراحل. يشرح لك ما هو هذا التخصّص فعلاً، أين ستعمل به، وأهم الأفكار التي تجنّبك الوقوع في أخطاء المبتدئين.</p>
+
+    <div class="cards">
+
+      <div class="card full">
+        <h3><span class="dot"></span> ما هو تخصّص الـ PWN باختصار؟</h3>
+        <p><span class="lead-term">PWN</span> (أو Binary Exploitation) هو فنّ استغلال الأخطاء في تعامل البرامج مع الذاكرة، لتحويل خطأ برمجي بسيط إلى سيطرة كاملة على تنفيذ البرنامج — وصولاً غالباً إلى فتح <span class="lead-term">Shell</span> (سطر أوامر) على النظام المستهدف. أنت هنا لا تهاجم موقع ويب أو شبكة، بل تهاجم <b>الملف التنفيذي نفسه</b> (binary): تدرس كيف يرتّب البيانات في الذاكرة، وتستغلّ لحظة يكتب فيها خارج المساحة المسموحة. هو أعمق الطبقات الهجومية في الأمن السيبراني، وأقربها إلى قلب الآلة.</p>
+      </div>
+
+      <div class="card full">
+        <h3><span class="dot"></span> الفكرة الأهم: أنت غالباً بلا كود مصدري (الصندوق الأسود)</h3>
+        <p>هذه أهم حقيقة في المجال، ومصدر قيمته كلّها: في العمل الحقيقي <b>نادراً ما تملك الكود المصدري</b> للبرنامج الذي تهاجمه. لو كان الكود متاحاً دائماً لاكتفت الشركات بمدقّق كود يقرأ الأسطر. قيمة مهندس الـ PWN تظهر تحديداً حين لا يوجد إلا ملف تنفيذي مغلق — راوتر اشتريته، firmware كاميرا، برنامج تجاري.</p>
+        <p>سلاحك حينها هو <span class="lead-term">الهندسة العكسية (Reverse Engineering)</span>: تأخذ الملف (أصفار وواحدات) وتعيده إلى شكل مقروء عبر أدوات مثل <b>Ghidra</b> أو <b>IDA</b> — إلى Assembly، أو تقريب مشوّه لكود C. ولهذا تحديداً وضعنا Assembly كفجوتك الحقيقية: بدونها أنت أعمى أمام أي ملف مغلق. مسارك مع الصندوق الأسود: هندسة عكسية لفهم البرنامج ← اكتشاف نقطة ضعف في الذاكرة ← بناء الاستغلال ← السيطرة، دون رؤية سطر واحد من الأصل.</p>
+        <div class="boxrow">
+          <span class="chip black">⬛ صندوق أسود (بلا مصدر) — الأشيع والأعلى قيمة · كل أجهزة IoT/OT هنا</span>
+          <span class="chip gray">🔲 صندوق رمادي — مصدر جزئي</span>
+          <span class="chip white">⬜ صندوق أبيض — مصدر كامل · نادر في هذا المجال</span>
+        </div>
+        <p style="margin-top:10px"><b style="color:var(--amber)">تحذير من فخّ شائع:</b> منصّات التعلّم تعطيك الكود المصدري مع التحدي لتبسيط البداية — وهذا صحيح تربوياً. لكن انتقل مبكّراً إلى تحديات "بلا مصدر" (pwnable.tw و HTB Pwn)، وإلّا تتعوّد على عكّاز لن تجده في العمل الحقيقي.</p>
+      </div>
+
+      <div class="card full">
+        <h3><span class="dot"></span> سيناريوهات العمل — أين تُطبّق هذه المهارة عملياً؟</h3>
+        <p>مهندس PWN لا يُوظَّف ليخترق برامج طوال اليوم. المهارة نفسها لغة أساسية تفتح خمسة أدوار مختلفة:</p>
+        <div class="scen"><b>1. باحث ثغرات (Vulnerability Researcher):</b> <span>يبحث عن ثغرات لم يكتشفها أحد (zero-day) في برنامج أو جهاز قبل المهاجمين. أعلى الأدوار أجراً وأندرها. يحتاج الوصول للمرحلة 4–5.</span></div>
+        <div class="scen"><b>2. مختبِر اختراق أجهزة (Hardware/Product Pentester) — الأقرب لك:</b> <span>تنتقل من اختبار الويب إلى اختبار جهاز فعلي (راوتر، كاميرا، حسّاس صناعي). الشركات مُلزَمة قانونياً باختبار أجهزتها، ومن يجيد فتح الـ firmware قليل جداً. هنا تلتقي مهارتك بتخصّص Cyberpedia في OT و IoT.</span></div>
+        <div class="scen"><b>3. مطوّر أدوات هجومية (Exploit/Tooling Developer):</b> <span>داخل فريق Red Team، تكتب الأدوات المخصّصة التي لا تكشفها برامج الحماية. أنت مهندس السلاح لا المخترِق في الميدان.</span></div>
+        <div class="scen"><b>4. محلّل برمجيات خبيثة (Malware Analyst):</b> <span>نفس عضلة الـ PWN معكوسة — تفكّك برمجية خبيثة لتفهم عملها وتوقفها. دور Blue Team راقٍ مطلوب في كل SOC ناضج.</span></div>
+        <div class="scen"><b>5. مدرّب/خبير أمن أجهزة:</b> <span>تقف أمام العميل وتخترق جهازاً حقيقياً أمام عينيه — تحوّل تدريب Cyberpedia من "شرح" إلى "إثبات"، وتفتح خطّ خدمة نادراً إقليمياً: تقييم أمان أجهزة IoT/OT.</span></div>
+      </div>
+
+      <div class="card">
+        <h3><span class="dot"></span> نصائح جوهرية في المجال</h3>
+        <div class="tip"><span class="n">1</span><span>هذا المجال يعطي عائده متأخّراً. لن تجني شيئاً في أول 6 أشهر، وقد تحبط — هذا طبيعي تماماً. من يصمد يدخل نادياً صغيراً يصعب استبداله.</span></div>
+        <div class="tip"><span class="n">2</span><span>جرّب التحدي بنفسك أولاً (ساعة على الأقل)، وشاهد الحلّ فقط إن علِقت. المشاهدة قبل المحاولة لا تُعلّم في هذا المجال.</span></div>
+        <div class="tip"><span class="n">3</span><span>عِش داخل الـ GDB. راقب الذاكرة بصرياً — لا تكتفِ بقراءة الكود أو تخيّله.</span></div>
+        <div class="tip"><span class="n">4</span><span>اكتب write-up لكل تحدٍّ تحلّه. الإثبات العملي المنشور يوظّفك في هذا المجال أكثر من أي شهادة.</span></div>
+      </div>
+
+      <div class="card">
+        <h3><span class="dot"></span> الأدوات التي ستلازمك</h3>
+        <div class="tip"><span class="n">•</span><span><b style="color:var(--accent)">GDB + pwndbg</b> — المُنقّح الذي ستراقب به الذاكرة سطراً بسطر.</span></div>
+        <div class="tip"><span class="n">•</span><span><b style="color:var(--accent)">pwntools</b> — مكتبة بايثون لبناء الاستغلالات وأتمتتها (خلفيتك ببايثون تخدمك هنا).</span></div>
+        <div class="tip"><span class="n">•</span><span><b style="color:var(--accent)">Ghidra / IDA</b> — الهندسة العكسية: تفكيك الملفات المغلقة وقراءتها.</span></div>
+        <div class="tip"><span class="n">•</span><span><b style="color:var(--accent)">binwalk</b> — استخراج الـ firmware من أجهزة IoT/OT.</span></div>
+        <div class="tip"><span class="n">•</span><span><b style="color:var(--accent)">checksec / ropper</b> — فحص حمايات الملف وإيجاد الـ gadgets.</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="phases"></div>
+
+  <div class="controls">
+    <button class="btn" onclick="expandAll(true)">توسيع الكل</button>
+    <button class="btn" onclick="expandAll(false)">طيّ الكل</button>
+    <button class="btn danger" onclick="resetAll()">تصفير التقدّم</button>
+  </div>
+
+  <footer>
+    <b>ملاحظة منهجية:</b> المعيار الحقيقي للنجاح في هذا المجال ليس عدد الدروس، بل عدد التحديات المحلولة وكتابة الـ write-ups.<br>
+    الأسبوعان الثاني والثالث (Assembly) هما أصعب المراحل نفسياً — تجاوزُهما يعني أنك داخل المجال فعلاً.<br>
+    أُعدّت بإشراف <b>j.tawelh</b> — Cyberpedia
+  </footer>
+</div>
+
+<div class="saved-flash" id="flash">✓ حُفظ التقدّم</div>
+
+<script>
+/* ============ بيانات خارطة الطريق ============ */
+const DATA = [
+  {
+    n:0, title:"المرحلة 0 — تهيئة البيئة وإحياء الأساس المنخفض المستوى",
+    meta:"المدة: 4–6 أسابيع · نقطة البداية الفعلية",
+    goal:"أن تقرأ كوداً بلغة Assembly وتفهم ماذا يفعل بالذاكرة. هذه هي فجوتك الحقيقية — كل شيء آخر تملكه.",
+    groups:[
+      { sub:"إعداد بيئة العمل (الأسبوع الأول · الأيام 1)", items:[
+        {t:"تثبيت نظام Linux للعمل — توزيعة Ubuntu كافية تماماً (لا حاجة لـ Kali هنا)", h:"يمكن تثبيته كنظام افتراضي (Virtual Machine) على جهازك عبر VMware أو VirtualBox."},
+        {t:"تثبيت المُنقّح <span class='term'>GDB</span> مع إضافة <span class='term'>pwndbg</span>", h:"GDB (المُنقّح - Debugger) هو الأداة التي ستراقب بها الذاكرة سطراً بسطر، وستعيش داخلها طوال المسار. pwndbg إضافة تجعل مخرجاتها مفهومة. الرابط: <a href='https://github.com/pwndbg/pwndbg' target='_blank' rel='noopener'>github.com/pwndbg/pwndbg</a>"},
+        {t:"تثبيت مكتبة <span class='term'>pwntools</span> عبر بايثون", h:"إطار عمل بايثون لبناء الاستغلالات وأتمتتها. الأمر: <code>pip install pwntools</code> — وهنا تبدأ خلفيتك ببايثون بالعمل لصالحك مباشرة."},
+        {t:"تثبيت المترجم <code>gcc</code> والتأكد من عمل <code>python3</code>", h:"gcc هو مترجم لغة C الذي ستحوّل به الكود إلى ملف تنفيذي (binary)."},
+      ]},
+      { sub:"إحياء لغة C — مركّزاً على الذاكرة فقط (الأيام 2–4)", items:[
+        {t:"إتقان المؤشّرات <span class='term'>Pointers</span> والمؤشّرات على المؤشّرات", h:"المؤشّر = متغيّر يخزّن عنوان موقع في الذاكرة بدل قيمة. هذا المفهوم هو حجر الأساس لكل ما بعده."},
+        {t:"فهم كيف تُخزَّن المصفوفات (Arrays) في الذاكرة بشكل متتالٍ", h:"لأن ثغرة الـ Overflow تحدث تحديداً حين تكتب خارج حدود المصفوفة."},
+        {t:"التمييز بين الـ <span class='term'>Stack</span> والـ <span class='term'>Heap</span> في تخصيص المتغيّرات", h:"Stack (المكدّس) = ذاكرة منظّمة تلقائياً للدوال والمتغيّرات المحلية. Heap (الكومة) = ذاكرة تحجزها وتحرّرها يدوياً."},
+        {t:"إتقان الحجز والتحرير اليدوي: <code>malloc</code> و <code>free</code>", h:"malloc يحجز مساحة في الـ Heap، free يحرّرها. سوء استخدامهما هو مصدر ثغرات المرحلة 3."},
+      ],
+        box:{h:"المرجع (بالأولوية)", type:"refs", list:[
+          "كتاب <b>The C Programming Language (K&R)</b> — الفصلان 5 و6 فقط (المؤشّرات والبنى)، لا الكتاب كاملاً.",
+        ]}
+      },
+      { sub:"أول عادة صحيحة (الأيام 5–7)", items:[
+        {t:"اكتب برنامج C صغيراً، ثم افتحه داخل GDB وراقب المتغيّرات في الذاكرة أثناء تنفيذه خطوة بخطوة", h:"هذه العادة — المراقبة داخل GDB — هي جوهر التخصّص كلّه. كرّرها حتى تصبح طبيعية.", tag:"milestone"},
+      ]},
+    ],
+    res:[
+      {type:"platform", label:"منصّة · مجاني", name:"OverTheWire — Bandit", url:"https://overthewire.org/wargames/bandit/",
+       focus:"إتقان سطر أوامر Linux (Terminal) حتى يصبح تلقائياً. لا تتخطَّ هذه — الاحتكاك بأوامر Linux لاحقاً سيضيّع عليك ساعات إن لم تتقنها الآن. أنجز المستويات حتى تكتب أوامر التنقّل والـ pipes وحلقات bash دون بحث."},
+      {type:"book", label:"كتاب · الأهم", name:"The C Programming Language — K&R", url:"",
+       focus:"الفصلان 5 و6 فقط (المؤشّرات Pointers والبنى Structs). لا تقرأ الكتاب كاملاً الآن. الهدف الوحيد: تفهم ماذا يحدث في الذاكرة عند كل سطر، لا أن تصبح مبرمج C محترفاً."},
+      {type:"video", label:"فيديو · بالعربية", name:"ابحث: 'شرح المؤشرات في لغة C' + 'GDB tutorial for beginners'", url:"",
+       focus:"إن وجدت المفهوم صعباً بالإنجليزية، ابدأ بشرح عربي للمؤشّرات فقط لترسيخ الفكرة، ثم عُد للمصدر الإنجليزي. لا تعتمد على العربية بعد هذه المرحلة — 90% من مصادر المجال إنجليزية وإنجليزيتك ممتازة."},
+    ]
+  },
+  {
+    n:1, title:"المرحلة 1 — الغوص في Assembly وبنية الحاسب",
+    meta:"المدة: 3–4 أسابيع · المنصّة: PWN.College",
+    goal:"أن تقرأ Assembly وتفهم الـ Registers والـ Stack وكيف تُستدعى الدوال وتعود.",
+    groups:[
+      { sub:"Assembly Crash Course", items:[
+        {t:"إنشاء حساب على <span class='term'>PWN.College</span> والبدء بمسار Assembly Crash Course", h:"المنصّة المجانية الأفضل عالمياً لهذا المجال. الرابط: <a href='https://pwn.college' target='_blank' rel='noopener'>pwn.college</a>"},
+        {t:"فهم الـ <span class='term'>Registers</span> (المسجّلات): rax, rbx, rsp, rip ووظيفة كل منها", h:"المسجّلات = خانات تخزين فائقة السرعة داخل المعالج نفسه. rsp يشير لقمة المكدّس، rip يشير للتعليمة التالية المطلوب تنفيذها."},
+        {t:"إتقان التعليمات الأساسية: <code>push</code> · <code>pop</code> · <code>mov</code> · <code>call</code> · <code>ret</code>", h:"هذه التعليمات تحرّك البيانات وتستدعي الدوال. فهم call/ret تحديداً هو مفتاح فهم كل ثغرات الـ Stack لاحقاً."},
+        {t:"فهم كيف يعمل الـ Stack فيزيائياً عند استدعاء دالة والعودة منها", h:"كل استدعاء دالة يضع 'عنوان الرجوع' (return address) على المكدّس — والكتابة فوقه هي البوابة الكلاسيكية للاختراق."},
+      ]},
+      { sub:"بنية الحاسب (تستفيد من خلفيتك الهندسية — ستمرّ سريعاً)", items:[
+        {t:"إكمال مسار Computer Architecture على PWN.College", h:"خلفيتك الهندسية تجعل هذا الجزء أسرع عليك من غيرك."},
+      ]},
+      { sub:"معيار الانتقال للمرحلة التالية", items:[
+        {t:"افتح دالة بسيطة في GDB واشرح بلسانك ماذا يحدث في الـ Stack عند استدعائها والعودة منها", h:"إن استطعت شرح ذلك بوضوح، فأنت جاهز للمرحلة 2.", tag:"milestone"},
+      ]},
+    ],
+    res:[
+      {type:"platform", label:"منصّة · العمود الفقري", name:"PWN.College — Computer Architecture & Assembly Crash Course", url:"https://pwn.college/",
+       focus:"هذه منصّتك الأساسية طوال المسار كلّه (جامعة ASU، مجانية، فيديو + تحديات). في هذه المرحلة: مسارَا Computer Architecture و Assembly Crash Course فقط. شاهد الفيديو ثم حُلّ تحدياته فوراً — لا تشاهد بلا حلّ."},
+      {type:"site", label:"مرجع · مجاني", name:"Azeria Labs — Assembly Basics", url:"https://azeria-labs.com/writing-arm-assembly-part-1/",
+       focus:"مرجع مكتوب واضح لمفاهيم الـ Assembly والـ Registers إن احتجت شرحاً مكتوباً يكمّل فيديوهات PWN.College. اقرأ ما يخصّ x86/x64 والمسجّلات فقط."},
+      {type:"video", label:"سلسلة يوتيوب", name:"OpenSecurityTraining2 — Architecture 1001 (x86-64 Assembly)", url:"https://ost2.fyi/Arch1001.html",
+       focus:"إن أردت تعمّقاً أكاديمياً في الـ Assembly وبنية x86-64. اختياري — لا تدخله إلا إن شعرت أن أساس PWN.College غير كافٍ. ركّز على استدعاء الدوال (calling convention) وتخطيط الـ Stack."},
+    ]
+  },
+  {
+    n:2, title:"المرحلة 2 — استغلال المكدّس الكلاسيكي (أول اختراق حقيقي)",
+    meta:"المدة: 4–5 أسابيع · هنا تشعر بأول 'سيطرة'",
+    goal:"السيطرة على تنفيذ برنامج فعلي — أول لحظة اختراق، وهي التي ستثبّتك في المجال نفسياً.",
+    groups:[
+      { sub:"Program Interaction", items:[
+        {t:"مسار Program Interaction على PWN.College: إرسال مدخلات مصمّمة لبرنامج", h:"هنا تستخدم pwntools لأول مرة عملياً — وتشعر بفائدة خلفيتك ببايثون مباشرة."},
+      ]},
+      { sub:"Stack Buffer Overflow", items:[
+        {t:"فهم ثغرة <span class='term'>Stack Buffer Overflow</span> نظرياً", h:"تعبئة مخزّن (buffer) في المكدّس بأكثر من سعته، فتطفح البيانات وتكتب فوق عنوان الرجوع — البوابة الكلاسيكية لهذا المجال."},
+        {t:"تنفيذ أول Overflow: الكتابة فوق عنوان الرجوع وإعادة توجيه البرنامج", h:"عبر مسار Memory Errors على PWN.College."},
+        {t:"تعلّم <span class='term'>Shellcode Injection</span>: حقن كود بلغة الآلة لفتح Shell", h:"Shellcode = كود صغير جداً بلغة الآلة، غالباً يفتح سطر أوامر (Shell) — ومن هنا جاء لقب 'getting a shell'."},
+      ]},
+      { sub:"أول إنجاز موثّق", items:[
+        {t:"حلّ أول تحدٍّ فعلي من فئة PWN واكتب write-up قصيراً عنه", h:"جرّب فئة easy على <a href='https://pwnable.tw' target='_blank' rel='noopener'>pwnable.tw</a> و <a href='http://pwnable.kr' target='_blank' rel='noopener'>pwnable.kr</a>. الـ write-up (توثيق كيف حللت التحدي) هو ما يوظّفك فعلاً في هذا المجال.", tag:"milestone"},
+      ]},
+    ],
+    res:[
+      {type:"video", label:"سلسلة يوتيوب · الأفضل للمبتدئ", name:"CryptoCat — Intro to Binary Exploitation (Buffer Overflow)", url:"https://www.youtube.com/playlist?list=PLHUKi1UlEgOIc07Rfk2Jgb5fZbxDPec94",
+       focus:"سلسلة عملية ممنهجة تشرح الـ Buffer Overflow خطوة بخطوة مع الأدوات (GDB, pwntools, Ghidra, checksec). طابِق كل فيديو مع تحدٍّ تحلّه بيدك مباشرة بعده. هذه أفضل سلسلة فيديو لهذه المرحلة تحديداً."},
+      {type:"platform", label:"منصّة · نفس المسار", name:"PWN.College — Program Interaction & Memory Errors", url:"https://pwn.college/",
+       focus:"مسارَا Program Interaction (استخدام pwntools عملياً) و Memory Errors (أول Stack Overflow). هنا تلتقي خلفيتك ببايثون بالمجال لأول مرة."},
+      {type:"site", label:"تحديات · تدريب", name:"Nightmare (GuyInATuxedo)", url:"https://guyinatuxedo.github.io/",
+       focus:"مرجع تحديات CTF مرتّب حسب الموضوع. القاعدة الذهبية: بعد أن تتعلّم تقنية من PWN.College، ابحث عن قسمها في Nightmare وحُلّ تحدياتها لترسيخها. التكرار هو ما يثبّت المهارة."},
+      {type:"site", label:"تحديات · للمبتدئ", name:"picoCTF — Binary Exploitation", url:"https://play.picoctf.org/",
+       focus:"تحديات لطيفة للبداية قبل pwnable.tw. ابدأ بفئة Binary Exploitation السهلة لبناء الثقة، ثم اكتب write-up لكل تحدٍّ."},
+    ]
+  },
+  {
+    n:3, title:"المرحلة 3 — الالتفاف على الحمايات الحديثة",
+    meta:"المدة: 6–8 أسابيع · هنا يبدأ التخصّص الحقيقي",
+    goal:"التعامل مع البرامج الحقيقية التي تملك دفاعات — تجاوز الحمايات هو جوهر مهارة المحترف.",
+    groups:[
+      { sub:"ROP والالتفاف على منع التنفيذ", items:[
+        {t:"إتقان <span class='term'>ROP</span> (Return-Oriented Programming)", h:"تقنية للالتفاف على حماية منع تنفيذ الكود (NX/DEP)، عبر إعادة استخدام قطع كود موجودة أصلاً في البرنامج تُسمّى gadgets. عبر مسار Return-Oriented Programming على PWN.College."},
+        {t:"فهم حماية <span class='term'>NX / DEP</span> (منع تنفيذ الكود في مناطق البيانات) وكيف يلتفّ ROP عليها", h:"NX = جعل مناطق الذاكرة القابلة للكتابة غير قابلة للتنفيذ، لمنع Shellcode. ROP هو الردّ عليها."},
+      ]},
+      { sub:"باقي الحمايات", items:[
+        {t:"الالتفاف على <span class='term'>ASLR</span> (عشوَنة عناوين الذاكرة)", h:"ASLR يجعل عناوين الذاكرة عشوائية في كل تشغيل — تتعلّم كيف تتسرّب عنواناً (leak) لهزيمتها."},
+        {t:"الالتفاف على <span class='term'>Stack Canaries</span> (حُرّاس المكدّس)", h:"Canary = قيمة سرّية توضع قبل عنوان الرجوع؛ إن تغيّرت يُوقَف البرنامج. تتعلّم كيف تتجاوزها."},
+        {t:"إتقان ثغرات <span class='term'>Format String</span>", h:"استغلال سوء استخدام دوال مثل printf للقراءة من الذاكرة أو الكتابة فيها."},
+      ]},
+      { sub:"الاحتكاك الحقيقي", items:[
+        {t:"المشاركة في مسابقات <span class='term'>CTF</span> حيّة — فئة PWN فقط", h:"عبر <a href='https://ctftime.org' target='_blank' rel='noopener'>ctftime.org</a>. المنافسة الحيّة تسرّع تعلّمك أضعافاً. (لديك فوز سابق بـ CTF — استثمره).", tag:"milestone"},
+      ]},
+    ],
+    res:[
+      {type:"site", label:"تدريب مُركّز · لا غنى عنه", name:"ROP Emporium", url:"https://ropemporium.com/",
+       focus:"8 تحديات مصمّمة لتعليم الـ ROP وحده، بترتيب متدرّج (ret2win → split → callme → write4 → badchars → fluff → pivot → ret2csu). هذا هو المكان الأمثل لإتقان ROP. حُلّها بالترتيب على x86_64، ولا تنتقل لتحدٍّ قبل فهم سابقه."},
+      {type:"video", label:"سلسلة يوتيوب · مرافِقة", name:"CryptoCat — ROP Emporium Series", url:"https://www.youtube.com/c/cryptocat23",
+       focus:"شروحات فيديو لكل تحديات ROP Emporium. القاعدة: جرّب التحدي بنفسك أولاً لساعة، وإن علِقت شاهد الفيديو — لا تشاهد قبل المحاولة، وإلا لن تتعلّم."},
+      {type:"platform", label:"منصّة · نفس المسار", name:"PWN.College — Return-Oriented Programming", url:"https://pwn.college/",
+       focus:"مسارات ROP والحمايات (ASLR, Canary, Format String) على المنصّة. ادرسها بالتوازي مع ROP Emporium."},
+      {type:"site", label:"مرجع مكتوب · ممتاز", name:"Ir0nstone — Binary Exploitation Notes", url:"https://ir0nstone.gitbook.io/notes",
+       focus:"مرجع مكتوب منظّم يشرح ROP و ret2libc والالتفاف على الحمايات بوضوح. استخدمه كقاموس تعود إليه عند كل تقنية جديدة — ركّز على أقسام Stack و ASLR bypass."},
+    ]
+  },
+  {
+    n:4, title:"المرحلة 4 — استغلال الـ Heap (ما يفصل المحترف عن الهاوي)",
+    meta:"المدة: 8–12 أسبوعاً · أعمق أجزاء المجال",
+    goal:"إتقان أصعب طبقة — استغلال مُخصّصات الذاكرة الديناميكية.",
+    groups:[
+      { sub:"أساسيات الـ Heap", items:[
+        {t:"فهم كيف يعمل مُخصّص الذاكرة <span class='term'>glibc malloc</span> داخلياً", h:"لفهم كيف تُدار الكومة (Heap) فعلياً على مستوى منخفض — شرط لأي استغلال هنا."},
+      ]},
+      { sub:"تقنيات استغلال الـ Heap", items:[
+        {t:"إتقان <span class='term'>Use-After-Free (UAF)</span>", h:"استخدام مؤشّر بعد تحرير الذاكرة التي يشير إليها — من أخطر الثغرات في البرمجيات الحقيقية."},
+        {t:"إتقان <span class='term'>Double Free</span> وهجمات Tcache / Fastbin", h:"تقنيات تتلاعب ببنية إدارة الذاكرة الداخلية للسيطرة على البرنامج."},
+      ]},
+      { sub:"المراجع والتطبيق", items:[
+        {t:"دراسة سلسلة heap على PWN.College + سلسلة <span class='term'>how2heap</span>", h:"how2heap من فريق Shellphish — الشرح العملي الأشهر عالمياً لاستغلال الكومة، مجاني على GitHub: <a href='https://github.com/shellphish/how2heap' target='_blank' rel='noopener'>github.com/shellphish/how2heap</a>"},
+        {t:"حلّ تحديات Heap متوسطة على pwnable.tw", h:"", tag:"milestone"},
+      ]},
+    ],
+    res:[
+      {type:"site", label:"مرجع · المعيار العالمي", name:"how2heap — Shellphish", url:"https://github.com/shellphish/how2heap",
+       focus:"الشرح العملي الأشهر لاستغلال الكومة، مرتّب حسب التقنية (fastbin, tcache, UAF, double free). شغّل كل مثال بنفسك داخل GDB وراقب ماذا يحدث في الذاكرة — لا تكتفِ بقراءة الكود."},
+      {type:"platform", label:"منصّة · نفس المسار", name:"PWN.College — Heap Exploitation (Dynamic Allocator Misuse)", url:"https://pwn.college/",
+       focus:"مسار Heap على المنصّة. يشرح بنية glibc malloc الداخلية — وهي الأساس الذي بدونه لن تفهم أي هجوم Heap."},
+      {type:"video", label:"سلسلة يوتيوب · متعمّقة", name:"CryptoCat — Heap Exploitation", url:"https://www.youtube.com/c/cryptocat23",
+       focus:"شروحات فيديو لتقنيات الـ Heap. مفيدة لأن الـ Heap صعب فهمه بالقراءة وحدها — رؤية التلاعب بالـ chunks بصرياً تُحدث فرقاً كبيراً."},
+      {type:"site", label:"تحديات · تطبيق", name:"pwnable.tw + Nightmare (Heap section)", url:"https://pwnable.tw/",
+       focus:"حُلّ تحديات Heap متوسطة بعد كل تقنية تتعلّمها من how2heap. هذه أصعب مرحلة — توقّع أن تقضي أياماً على تحدٍّ واحد، وهذا طبيعي تماماً."},
+    ]
+  },
+  {
+    n:5, title:"المرحلة 5 — الربط مع تخصّص Cyberpedia وبناء السمعة",
+    meta:"مستمرّة · تحويل المهارة إلى قيمة مهنية",
+    goal:"توجيه المهارة نحو firmware/IoT وبناء ملف أعمال (portfolio) يوظّفك فعلاً.",
+    groups:[
+      { sub:"التخصّص التطبيقي", items:[
+        {t:"توجيه المهارة نحو <span class='term'>firmware / embedded exploitation</span>", h:"هنا يلتقي مسار PWN مباشرة مع مساري OT Security و IoT Security في Cyberpedia — وتصبح المحرّك الهجومي لهذه الشريحة."},
+        {t:"إتقان الهندسة العكسية <span class='term'>Reverse Engineering</span> بأداة <span class='term'>Ghidra</span>", h:"Ghidra أداة مجانية من NSA لتفكيك الملفات التنفيذية وفهمها. البديل التجاري: IDA Pro."},
+      ]},
+      { sub:"بناء السمعة (الأهم للتوظيف)", items:[
+        {t:"بناء <span class='term'>portfolio</span>: انشر write-up لكل تحدٍّ تحلّه", h:"في هذا المجال تحديداً، الإثبات العملي (CTFs + write-ups منشورة) أهمّ من الشهادات بكثير. هذا ما يوظّفك فعلاً.", tag:"milestone"},
+      ]},
+      { sub:"الشهادات (اختيارية · بالأولوية)", items:[
+        {t:"شهادات إتمام PWN.College — كافية للبداية ومعترف بها في المجتمع", h:""},
+        {t:"<span class='term'>OSED</span> (OffSec Exploit Developer) — الشهادة المرجعية، هدف بعيد لا نقطة بداية", h:"متقدّمة ومكلفة؛ لا تفكّر بها قبل إتمام المرحلة 3–4."},
+      ]},
+    ],
+    res:[
+      {type:"book", label:"كتاب · مرجعي", name:"Practical Binary Analysis — Dennis Andriesse", url:"",
+       focus:"للتعمّق في الهندسة العكسية وتحليل الملفات التنفيذية (ELF) على مستوى احترافي. اقرأه في هذه المرحلة، لا قبلها. ركّز على أقسام disassembly و dynamic analysis."},
+      {type:"platform", label:"أداة · مجاني", name:"Ghidra (NSA)", url:"https://ghidra-sre.org/",
+       focus:"أداة الهندسة العكسية المجانية. تعلّم تفكيك ملف تنفيذي وقراءة الكود المفكَّك (decompiled). هي جسرك نحو تحليل firmware أجهزة OT/IoT — تخصّص Cyberpedia."},
+      {type:"site", label:"مرجع · CVEs حقيقية", name:"Exploit-DB + قراءة كتابات الثغرات (write-ups)", url:"https://www.exploit-db.com/",
+       focus:"في هذه المرحلة توقّف عن التحديات المصطنعة وابدأ بدراسة ثغرات حقيقية (CVEs). اختر CVE في برنامج مفتوح المصدر وحاول فهم/إعادة إنتاج الثغرة بنفسك — هذا هو Vulnerability Research الفعلي."},
+      {type:"video", label:"للتخصّص · IoT/Firmware", name:"ابحث: 'firmware emulation FirmAE' + 'embedded exploitation'", url:"",
+       focus:"وجِّه مهارتك نحو أجهزة IoT/OT: محاكاة الـ firmware واستخراجه (binwalk) وتحليله. هنا يصبح تخصّصك ذا قيمة تجارية مباشرة لـ Cyberpedia."},
+    ]
+  },
+];
+
+/* ============ المنطق ============ */
+const KEY = "pwn_roadmap_ahmad_v1";
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch(e){ state = {}; }
+
+let idMap = [];
+function build(){
+  const root = document.getElementById("phases");
+  root.innerHTML = "";
+  idMap = [];
+  DATA.forEach((ph, pi)=>{
+    const phaseEl = document.createElement("div");
+    phaseEl.className = "phase";
+    if(state["_collapsed_"+pi]) phaseEl.classList.add("collapsed");
+
+    // head
+    const head = document.createElement("div");
+    head.className = "phase-head";
+    head.innerHTML = `
+      <div class="phase-num">${ph.n}</div>
+      <div class="phase-titles">
+        <h2>${ph.title}</h2>
+        <div class="meta">${ph.meta}</div>
+      </div>
+      <div class="phase-badge" id="badge-${pi}">0/0</div>
+      <div class="chev">▼</div>`;
+    head.onclick = ()=>{ phaseEl.classList.toggle("collapsed");
+      state["_collapsed_"+pi] = phaseEl.classList.contains("collapsed"); save(); };
+    phaseEl.appendChild(head);
+
+    // body
+    const body = document.createElement("div");
+    body.className = "phase-body";
+    body.innerHTML = `<div class="goal"><b>الهدف:</b> ${ph.goal}</div>`;
+
+    ph.groups.forEach((g, gi)=>{
+      const st = document.createElement("div");
+      st.className = "sub-title";
+      st.textContent = g.sub;
+      body.appendChild(st);
+
+      g.items.forEach((it, ii)=>{
+        const id = `p${pi}g${gi}i${ii}`;
+        idMap.push(id);
+        const checked = !!state[id];
+        const item = document.createElement("div");
+        item.className = "item" + (checked?" checked":"");
+        item.innerHTML = `
+          <div class="cbox">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#04121a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="body-txt">
+            <div class="txt">${it.t}${it.tag==="milestone"?'<span class="tag milestone">محطة تحقّق</span>':''}</div>
+            ${it.h?`<div class="hint">${it.h}</div>`:''}
+          </div>`;
+        item.querySelector(".cbox").onclick = ()=>{
+          state[id] = !state[id];
+          item.classList.toggle("checked", state[id]);
+          save(); refresh();
+        };
+        body.appendChild(item);
+      });
+
+      if(g.box){
+        const box = document.createElement("div");
+        box.className = "box";
+        box.innerHTML = `<h4>${g.box.h}</h4><ul>${g.box.list.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+        body.appendChild(box);
+      }
+    });
+
+    // resources block
+    if(ph.res && ph.res.length){
+      const res = document.createElement("div");
+      res.className = "res";
+      res.innerHTML = `<div class="res-head">المصادر والمراجع لهذه المرحلة</div>
+        <p class="res-sub">لكل مصدر: ماذا يركّز عليه أحمد فيه تحديداً — لا يدرسه كاملاً بلا هدف.</p>` +
+        ph.res.map(r=>`
+          <div class="res-item">
+            <div class="res-name"><span class="type ${r.type}">${r.label}</span>${r.url?`<a href="${r.url}" target="_blank" rel="noopener">${r.name}</a>`:r.name}</div>
+            <div class="res-focus"><b>ركّز على:</b> ${r.focus}</div>
+          </div>`).join("");
+      body.appendChild(res);
+    }
+
+    phaseEl.appendChild(body);
+    root.appendChild(phaseEl);
+  });
+  refresh();
+}
+
+function refresh(){
+  let total=0, done=0;
+  DATA.forEach((ph,pi)=>{
+    let pt=0, pd=0;
+    ph.groups.forEach((g,gi)=>g.items.forEach((it,ii)=>{
+      pt++; total++;
+      if(state[`p${pi}g${gi}i${ii}`]){ pd++; done++; }
+    }));
+    const badge = document.getElementById("badge-"+pi);
+    if(badge){
+      badge.textContent = `${pd}/${pt}`;
+      badge.classList.toggle("done", pd===pt && pt>0);
+      if(pd===pt && pt>0) badge.textContent = "✓ مكتملة";
+    }
+  });
+  const pct = total? Math.round(done/total*100):0;
+  document.getElementById("pct").textContent = pct+"%";
+  document.getElementById("barFill").style.width = pct+"%";
+  document.getElementById("progNote").textContent = `أنجزت ${done} من ${total} خطوة.`;
+}
+
+let flashT;
+function save(){
+  try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){}
+  const f = document.getElementById("flash");
+  f.classList.add("show");
+  clearTimeout(flashT);
+  flashT = setTimeout(()=>f.classList.remove("show"), 1200);
+}
+
+function expandAll(open){
+  document.querySelectorAll(".phase").forEach((el,i)=>{
+    el.classList.toggle("collapsed", !open);
+    state["_collapsed_"+i] = !open;
+  });
+  save();
+}
+function resetAll(){
+  if(confirm("هل تريد تصفير كل التقدّم؟ لا يمكن التراجع.")){
+    state = {}; save(); build();
+  }
+}
+
+build();
+</script>
+</body>
+</html>
