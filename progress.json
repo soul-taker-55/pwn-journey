@@ -1,0 +1,18 @@
+{
+  "learner": "soul-taker-55",
+  "track": "PWN / Binary Exploitation",
+  "started": "2026-09-27",
+  "current": { "phase": 0, "section": 1, "lesson": "lesson-01-pointers" },
+  "phases": [
+    { "id": 0, "title": "الأساسيات — البيئة + C/Assembly", "status": "in_progress",
+      "lessons": [
+        { "id": "lesson-01-pointers", "title": "المؤشّرات", "status": "not_started",
+          "quiz_score": null, "lab_done": false, "writeup_done": false, "completed_on": null }
+      ] },
+    { "id": 1, "title": "Assembly وبنية الحاسب", "status": "not_started", "lessons": [] },
+    { "id": 2, "title": "استغلال المكدّس الكلاسيكي", "status": "not_started", "lessons": [] },
+    { "id": 3, "title": "الالتفاف على الحمايات الحديثة", "status": "not_started", "lessons": [] },
+    { "id": 4, "title": "استغلال الـ Heap", "status": "not_started", "lessons": [] },
+    { "id": 5, "title": "التخصّص + portfolio", "status": "not_started", "lessons": [] }
+  ]
+}
