@@ -1,17 +1,17 @@
-# لاب الدرس 01: المؤشّرات
+# Lab — Lesson 01: Pointers
 
-## الهدف
-ترى بعينك أن المؤشّر يخزّن عنواناً، وأن التعديل عبره يغيّر المتغيّر الأصلي.
+## Goal
+See with your own eyes that a pointer stores an address, and that modifying through it changes the original variable.
 
-## التشغيل
+## Run
 ```bash
 gcc vuln.c -o vuln
 ./vuln
 ```
 
-## المطلوب منك
-1. شغّل البرنامج ولاحظ المخرجات.
-2. افتحه في GDB وراقب العنوان والقيمة:
+## Your task
+1. Run the program and observe the output.
+2. Open it in GDB and watch the address and value:
    ```bash
    gdb ./vuln
    (gdb) break main
@@ -20,6 +20,6 @@ gcc vuln.c -o vuln
    (gdb) print x
    (gdb) print p
    ```
-3. عدّل `vuln.c` كما في TASKS.md، وأعد الترجمة والتشغيل.
+3. Modify `vuln.c` as in TASKS.md, then recompile and run.
 
-> ملاحظة: هذا اللاب "أبيض" (بالكود المصدري) للفهم. في مراحل لاحقة سنجرّد الكود ونهاجم الثنائي مباشرةً كصندوق أسود.
+> Note: this lab is "white box" (with source) for understanding. In later phases we'll strip the source and attack the binary directly as a black box.

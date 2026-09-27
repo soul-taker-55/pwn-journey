@@ -1,10 +1,10 @@
-# امتحان الدرس 01: المؤشّرات
+# Lesson 01 Quiz: Pointers
 
-أجب في ملف `ANSWERS.md` ثم ارفعه (commit). لا تنظر إلى أي حلّ قبل المحاولة.
+Answer in `ANSWERS.md`, then commit. Do not look at any solution before trying.
 
-1. بكلماتك: ما الفرق بين `&x` و `*p`؟
-2. إذا كان `int x = 10; int *p = &x;` فما قيمة كلٍّ من: `x` ، `*p` ، وهل `p == &x`؟
-3. ماذا يفعل السطر `*p = 25;` بقيمة `x`؟ ولماذا؟
-4. **تطبيقي:** اكتب مقطع C من 3 أسطر: يعرّف متغيّراً، ويعرّف مؤشّراً إليه، ويضاعف قيمة المتغيّر **عبر المؤشّر** (دون ذكر اسم المتغيّر في سطر المضاعفة).
+1. In your own words: what is the difference between `&x` and `*p`?
+2. Given `int x = 10; int *p = &x;`, what are the values of: `x`, `*p`, and is `p == &x`?
+3. What does `*p = 25;` do to the value of `x`? Why?
+4. **Applied:** write a 3-line C snippet that defines a variable, defines a pointer to it, and doubles the variable's value **through the pointer** (without naming the variable on the doubling line).
 
-> حدّ النجاح: 3 من 4.
+> Pass mark: 3 of 4.

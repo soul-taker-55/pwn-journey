@@ -1,12 +1,12 @@
-# Write-up — الدرس 01: المؤشّرات
+# Write-up — Lesson 01: Pointers
 
-> اكتبه بنفسك بعد إتمام الدرس وارفعه (commit).
+> Write it yourself after finishing the lesson, then commit.
 
-## الملخّص
-<ماذا فهمت عن المؤشّرات في سطرين.>
+## Summary
+<What you understood about pointers, in two lines.>
 
-## أهم فكرة
-<الفكرة التي ثبتت عندك.>
+## Key idea
+<The idea that stuck with you.>
 
-## نقطة ربط بالـ PWN
-<كيف تتخيّل أن هذا المفهوم يُستغَلّ لاحقاً.>
+## Link to PWN
+<How you imagine this concept gets exploited later.>

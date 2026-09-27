@@ -1,10 +1,10 @@
-# 📚 سجلّ الموارد
+# 📚 Resource Log
 
-كل مورد خارجي (فيديو، مقال، أداة) يُوصى به أثناء التعلّم يُسجَّل هنا.
-**الحقل الإلزامي: "ماذا تعلّمت منه"** — هو إثبات الاستيعاب، لا مجرّد المشاهدة.
+Every external resource (video, article, tool) recommended during learning is logged here.
+**Mandatory field: "What I learned"** — that is the proof of absorption, not just watching.
 
-| التاريخ | الدرس | المورد (رابط) | النوع | الحالة | ماذا تعلّمت منه |
-|---------|-------|----------------|-------|--------|------------------|
-| | lesson-01 | [مثال: شرح المؤشّرات](#) | فيديو | ⬜ | (يُملأ بعد المشاهدة) |
+| Date | Lesson | Resource (link) | Type | Status | What I learned |
+|------|--------|-----------------|------|--------|----------------|
+| | lesson-01 | [example: pointers explained](#) | video | ⬜ | (fill after watching) |
 
-> النوع: فيديو / مقال / أداة / وثائق · الحالة: ⬜ لم يُنجز · ✅ أُنجز
+> Type: video / article / tool / docs · Status: ⬜ not done · ✅ done

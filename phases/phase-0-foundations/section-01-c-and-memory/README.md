@@ -1,8 +1,8 @@
-# القسم 01 — لغة C والذاكرة
+# Section 01 — C and Memory
 
-**الهدف:** فهم كيف تُدار الذاكرة فعلياً في C — المؤشّرات، المصفوفات، الـ Stack مقابل الـ Heap، والحجز اليدوي.
+**Goal:** understand how memory is really managed in C — pointers, arrays, stack vs heap, and manual allocation.
 
-## الدروس
-- `lesson-01-pointers/` — المؤشّرات (Pointers). ← ابدأ هنا
-- (لاحقاً) lesson-02 — المصفوفات وتخطيطها في الذاكرة.
-- (لاحقاً) lesson-03 — malloc/free.
+## Lessons
+- `lesson-01-pointers/` — Pointers. ← start here
+- (later) lesson-02 — Arrays and their memory layout.
+- (later) lesson-03 — malloc/free.

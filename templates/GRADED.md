@@ -1,19 +1,19 @@
-# تصحيح الامتحان — <عنوان الدرس>
+# Quiz Grading — <lesson title>
 
-> يكتبه Claude بعد مراجعة ANSWERS.md.
+> Written by Claude after reviewing ANSWERS.md.
 
-**الدرجة:** <x/4>
+**Score:** <x/4>
 
-| السؤال | صحّة | ملاحظة |
-|--------|------|--------|
+| Question | Correct | Note |
+|----------|---------|------|
 | 1 | ✅/❌ | |
 | 2 | ✅/❌ | |
 | 3 | ✅/❌ | |
 | 4 | ✅/❌ | |
 
-## ما يجب مراجعته
-- <النقاط التي يحتاج المتعلّم إلى إعادة النظر فيها.>
+## To review
+- <points the learner needs to reconsider.>
 
-## القرار
-- [ ] اجتاز → ينتقل للدرس التالي
-- [ ] يحتاج مراجعة → يعيد النقاط أعلاه
+## Decision
+- [ ] Passed → next lesson
+- [ ] Needs review → redo the points above

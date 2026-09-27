@@ -1,18 +1,18 @@
-# تصحيح الامتحان — الدرس 01: المؤشّرات
+# Quiz Grading — Lesson 01: Pointers
 
-> يكتبه Claude بعد أن ترفع ANSWERS.md. اتركه فارغاً الآن.
+> Written by Claude after you commit ANSWERS.md. Leave it empty for now.
 
-**الدرجة:** —/4
+**Score:** —/4
 
-| السؤال | صحّة | ملاحظة |
-|--------|------|--------|
+| Question | Correct | Note |
+|----------|---------|------|
 | 1 | | |
 | 2 | | |
 | 3 | | |
 | 4 | | |
 
-## ما يجب مراجعته
+## To review
 
-## القرار
-- [ ] اجتاز → الدرس التالي
-- [ ] يحتاج مراجعة
+## Decision
+- [ ] Passed → next lesson
+- [ ] Needs review

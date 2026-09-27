@@ -1,10 +1,10 @@
-# امتحان الدرس: <عنوان الدرس>
+# Lesson Quiz: <lesson title>
 
-أجب في ملف `ANSWERS.md` ثم ارفعه (commit). لا تنظر إلى الحلول قبل المحاولة.
+Answer in `ANSWERS.md`, then commit. Do not look at any solution before trying.
 
-1. <سؤال 1>
-2. <سؤال 2>
-3. <سؤال 3>
-4. <سؤال تطبيقي: اشرح بكلماتك / حلّل مقطعاً>
+1. <question 1>
+2. <question 2>
+3. <question 3>
+4. <applied question: explain in your words / analyze a snippet>
 
-> حدّ النجاح: <مثلاً 3 من 4>.
+> Pass mark: <e.g. 3 of 4>.

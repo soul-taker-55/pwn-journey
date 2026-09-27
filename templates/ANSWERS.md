@@ -1,6 +1,6 @@
-# إجاباتي — <عنوان الدرس>
+# My Answers — <lesson title>
 
-> يملؤه المتعلّم ويرفعه بنفسه (commit).
+> Filled and committed by the learner.
 
 1.
 2.

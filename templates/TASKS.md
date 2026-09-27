@@ -1,13 +1,13 @@
-# تاسكات الدرس: <عنوان الدرس>
+# Lesson Tasks: <lesson title>
 
-علّم كل صندوق عند إنجازه، ثم اعمل commit.
+Tick each box when done, then commit.
 
-## مهامّ عملية
-- [ ] <مهمّة ملموسة 1>
-- [ ] <مهمّة ملموسة 2>
+## Practical tasks
+- [ ] <concrete task 1>
+- [ ] <concrete task 2>
 
-## واجب خارجي (إن وُجد)
-- [ ] <تحدٍّ محدّد على منصّة خارجية — الدليل: write-up في المستودع>
+## External assignment (if any)
+- [ ] <specific challenge on an external platform — proof: a write-up in the repo>
 
-## المصادر (بالأولوية)
-1. **[<اسم المصدر>](<رابط>)** — ركّز على: <ماذا تأخذ منه>.
+## Resources (by priority)
+1. **[<resource name>](<link>)** — focus on: <what to take from it>.

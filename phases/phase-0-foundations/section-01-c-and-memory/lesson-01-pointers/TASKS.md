@@ -1,18 +1,18 @@
-# تاسكات الدرس 01: المؤشّرات
+# Lesson 01 Tasks: Pointers
 
-علّم كل صندوق عند إنجازه، ثم اعمل commit.
+Tick each box when done, then commit.
 
-## مهامّ عملية
-- [ ] اقرأ `LESSON.md` كاملاً وأجب لنفسك عن سؤالَي "تحقّق من فهمك".
-- [ ] ترجم لاب الدرس وشغّله: `cd lab && gcc vuln.c -o vuln && ./vuln`
-- [ ] عدّل `vuln.c`: أضف مؤشّراً ثانياً يشير إلى نفس المتغيّر، واطبع القيمة عبره.
-- [ ] افتح البرنامج في GDB وراقب عنوان المتغيّر وقيمته: `gdb ./vuln` ثم `break main` و `run` و `print &x` و `print x`.
-- [ ] اكتب بنفسك برنامجاً صغيراً: مؤشّر يغيّر قيمة متغيّر، وتأكّد أن التغيير ظهر.
+## Practical tasks
+- [ ] Read `LESSON.md` fully and answer the two "Check Your Understanding" questions for yourself.
+- [ ] Compile and run the lab: `cd lab && gcc vuln.c -o vuln && ./vuln`
+- [ ] Modify `vuln.c`: add a second pointer to the same variable and print the value through it.
+- [ ] Open the program in GDB and watch the variable's address and value: `gdb ./vuln`, then `break main`, `run`, `print &x`, `print x`.
+- [ ] Write your own small program: a pointer that changes a variable's value, and confirm the change appears.
 
-## واجب خارجي
-- [ ] راجع فصل المؤشّرات في مصدر واحد من المصادر أدناه، وسجّل في `resources.md` ماذا تعلّمت منه.
+## External assignment
+- [ ] Review the pointers chapter in one resource below, and log in `resources.md` what you learned.
 
-## المصادر (بالأولوية)
-1. **The C Programming Language (K&R) — الفصل 5** — ركّز على: المؤشّرات وعلاقتها بالمصفوفات فقط، لا الفصل كاملاً.
-2. **[شرح المؤشّرات بالعربية — ابحث في يوتيوب]** — ركّز على: الفكرة البصرية (العنوان مقابل القيمة) إن احتجت ترسيخاً.
-3. **[GDB pwndbg — cheat sheet](https://github.com/pwndbg/pwndbg)** — ركّز على: أوامر `print` و `x` و `break` فقط الآن.
+## Resources (by priority)
+1. **The C Programming Language (K&R) — Chapter 5** — focus on: pointers and their relation to arrays only, not the whole chapter.
+2. **[Pointers explained — search YouTube]** — focus on: the visual idea (address vs value) if you need reinforcement.
+3. **[GDB pwndbg — cheat sheet](https://github.com/pwndbg/pwndbg)** — focus on: only `print`, `x`, and `break` for now.

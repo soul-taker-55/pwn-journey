@@ -1,23 +1,23 @@
-# الدرس: <عنوان الدرس>
+# Lesson: <lesson title>
 
-> **المرحلة:** <رقم> · **القسم:** <رقم> · **المدة التقديرية:** <ساعات>
+> **Phase:** <n> · **Section:** <n> · **Estimated time:** <hours>
 
-## 🎯 هدف الدرس
-<ماذا سيُتقن المتعلّم بنهاية هذا الدرس — جملة أو جملتان.>
+## 🎯 Lesson Goal
+<What the learner will master by the end — one or two sentences.>
 
-## 🧩 المتطلّب السابق
-<ما يجب أن يكون قد أتقنه قبل هذا الدرس.>
+## 🧩 Prerequisite
+<What must be mastered before this lesson.>
 
-## 📖 الشرح
-<الشرح خطوة بخطوة. كل مصطلح إنجليزي يُشرح بالعربية. استخدم رسوماً (ASCII) للمفاهيم المجرّدة.>
+## 📖 Explanation
+<Step-by-step explanation. Explain each new term. Use diagrams (ASCII) for abstract ideas.>
 
-## 🖼️ رسم توضيحي
+## 🖼️ Diagram
 ```
-<مخطّط بصري يجسّد الفكرة>
+<visual that embodies the idea>
 ```
 
-## 💡 لماذا يهمّ هذا في الـ PWN؟
-<الربط المباشر بين المفهوم والاستغلال.>
+## 💡 Why does this matter in PWN?
+<The direct link between the concept and exploitation.>
 
-## ✅ تحقّق من فهمك
-<سؤال أو سؤالان سريعان يجيب عنهما المتعلّم لنفسه قبل الانتقال.>
+## ✅ Check Your Understanding
+<One or two quick questions the learner answers for themselves before moving on.>

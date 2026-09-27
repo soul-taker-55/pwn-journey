@@ -1,47 +1,47 @@
-# 🎯 PWN Journey — رحلة تعلّم الـ Binary Exploitation
+# 🎯 PWN Journey — Binary Exploitation Learning Path
 
-توثيق كامل لرحلة تعلّم تخصّص الـ PWN (استغلال الثغرات على مستوى الذاكرة) — الدروس، اللابات، الأكواد، والـ write-ups، خطوةً بخطوة مع Claude كمعلّم.
+A complete, documented journey through Binary Exploitation (memory-level vulnerability exploitation) — lessons, labs, code, and write-ups, step by step, with Claude as the instructor.
 
-> **ابدأ من هنا:** افتح [`START-HERE.md`](START-HERE.md) لتعرف أين أنت الآن وما خطوتك التالية.
-
----
-
-## 📊 لوحة التقدّم
-
-| المرحلة | الموضوع | الحالة |
-|---------|---------|--------|
-| 0 | الأساسيات — البيئة + C/Assembly | 🟡 قيد التنفيذ |
-| 1 | Assembly وبنية الحاسب | ⬜ لم تبدأ |
-| 2 | استغلال المكدّس الكلاسيكي | ⬜ لم تبدأ |
-| 3 | الالتفاف على الحمايات الحديثة | ⬜ لم تبدأ |
-| 4 | استغلال الـ Heap | ⬜ لم تبدأ |
-| 5 | التخصّص + بناء الـ portfolio | ⬜ لم تبدأ |
-
-> المصدر الرقمي الدقيق للحالة: [`progress.json`](progress.json) · المتتبّع التفاعلي: [`roadmap.html`](roadmap.html)
+> **Start here:** open [`START-HERE.md`](START-HERE.md) to see where you are and what your next step is.
 
 ---
 
-## 🗂️ كيف يُنظَّم المستودع
+## 📊 Progress Board
+
+| Phase | Topic | Status |
+|-------|-------|--------|
+| 0 | Foundations — Environment + C/Assembly | 🟡 In progress |
+| 1 | Assembly & Computer Architecture | ⬜ Not started |
+| 2 | Classic Stack Exploitation | ⬜ Not started |
+| 3 | Bypassing Modern Mitigations | ⬜ Not started |
+| 4 | Heap Exploitation | ⬜ Not started |
+| 5 | Specialization + Portfolio | ⬜ Not started |
+
+> Machine-readable status: [`progress.json`](progress.json) · Interactive tracker: [`roadmap.html`](roadmap.html)
+
+---
+
+## 🗂️ Repository Structure
 
 ```
-phases/ ← مراحل ← أقسام (sections) ← دروس (lessons)
+phases/ → phases → sections → lessons
 ```
 
-كل درس وحدة مغلقة تحوي: الشرح، التاسكات، الامتحان، الإجابات، التصحيح، اللاب، والتوثيق النهائي.
+Each lesson is a self-contained unit: the explanation, tasks, quiz, answers, grading, lab, and final write-up.
 
-- [`templates/`](templates/) — القوالب الستّة التي يُبنى منها كل درس.
-- [`resources.md`](resources.md) — سجلّ الموارد الطارئة (فيديوهات/مقالات مع "ماذا تعلّمت").
-- [`writeups/`](writeups/) — أفضل الـ write-ups المنتقاة (نواة الـ portfolio).
-
----
-
-## ⚙️ قواعد العمل
-
-- **لا شيء يعيش في المحادثة فقط** — كل شيء يُوثّق هنا.
-- **الملكية:** المتعلّم يرفع بيده إجاباته وحلوله و write-ups (ليبقى سجلّ مساهماته صادقاً)؛ مادّة المعلّم من Claude.
-- **تعريف "تمّ":** فهم الشرح + اجتياز الامتحان + إنجاز اللاب + كتابة write-up.
-- كل commit = خطوة درسٍ فعلية. رسم المساهمات هو سجلّ الانضباط.
+- [`templates/`](templates/) — the six templates every lesson is built from.
+- [`resources.md`](resources.md) — log of ad-hoc resources (videos/articles with "what I learned").
+- [`writeups/`](writeups/) — curated best write-ups (the portfolio core).
 
 ---
 
-*مستودع عامّ — للتعلّم والمشاركة.*
+## ⚙️ Working Rules
+
+- **Nothing lives in chat only** — everything is documented here.
+- **Ownership:** the learner commits their own answers, solutions, and write-ups (so the contribution graph honestly reflects real effort); instructor material comes from Claude.
+- **Definition of Done:** understand the lesson + pass the quiz + complete the lab + write a write-up.
+- Every commit = a real lesson step. The contribution graph is the discipline log.
+
+---
+
+*Public repository — for learning and sharing.*

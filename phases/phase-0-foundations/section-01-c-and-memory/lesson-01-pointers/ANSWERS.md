@@ -1,6 +1,6 @@
-# إجاباتي — الدرس 01: المؤشّرات
+# My Answers — Lesson 01: Pointers
 
-> املأ هذا الملف بإجاباتك ثم ارفعه بنفسك (commit). هذا الـ commit جزء من سجلّ انضباطك.
+> Fill this file with your answers, then commit it yourself. This commit is part of your discipline log.
 
 1.
 
@@ -10,5 +10,5 @@
 
 4.
 ```c
-// اكتب كودك هنا
+// write your code here
 ```

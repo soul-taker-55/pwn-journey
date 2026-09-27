@@ -1,6 +1,6 @@
-# المرحلة 3 — الالتفاف على الحمايات الحديثة
+# Phase 3 — Bypassing Modern Mitigations
 
-**الهدف:** التعامل مع البرامج ذات الدفاعات (ROP, NX/DEP, ASLR, Stack Canaries, Format String).
-**المدة:** 6–8 أسابيع · هنا يبدأ التخصّص الحقيقي.
+**Goal:** deal with defended programs (ROP, NX/DEP, ASLR, Stack Canaries, Format String).
+**Duration:** 6–8 weeks · this is where the real specialization begins.
 
-> تُملأ أقسامها ودروسها عند الوصول إليها.
+> Sections and lessons are filled in when you reach them.

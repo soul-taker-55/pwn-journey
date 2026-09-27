@@ -1,6 +1,6 @@
-# المرحلة 1 — Assembly وبنية الحاسب
+# Phase 1 — Assembly & Computer Architecture
 
-**الهدف:** قراءة Assembly وفهم الـ Registers والـ Stack وكيف تُستدعى الدوال وتعود.
-**المدة:** 3–4 أسابيع · المنصّة: PWN.College.
+**Goal:** read Assembly and understand registers, the stack, and how functions are called and return.
+**Duration:** 3–4 weeks · Platform: PWN.College.
 
-> تُملأ أقسامها ودروسها عند الوصول إليها.
+> Sections and lessons are filled in when you reach them.

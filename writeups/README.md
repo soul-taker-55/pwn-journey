@@ -1,4 +1,4 @@
-# 🏆 Write-ups منتقاة
+# 🏆 Curated Write-ups
 
-أفضل الـ write-ups من الدروس والتحديات، منسوخة هنا كواجهة portfolio نظيفة.
-كل write-up يعيش أولاً داخل درسه، ثم يُنقل أفضلها إلى هنا.
+The best write-ups from lessons and challenges, copied here as a clean portfolio front.
+Each write-up lives first inside its lesson, then the best ones are promoted here.

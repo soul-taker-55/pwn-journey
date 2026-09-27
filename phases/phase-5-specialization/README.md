@@ -1,6 +1,6 @@
-# المرحلة 5 — التخصّص + بناء الـ portfolio
+# Phase 5 — Specialization + Portfolio
 
-**الهدف:** توجيه المهارة نحو firmware/IoT، والهندسة العكسية بـ Ghidra، وبناء ملف أعمال يوظّف.
-**المدة:** مستمرّة.
+**Goal:** aim the skill at firmware/IoT, reverse engineering with Ghidra, and build an employable portfolio.
+**Duration:** ongoing.
 
-> تُملأ أقسامها ودروسها عند الوصول إليها.
+> Sections and lessons are filled in when you reach them.

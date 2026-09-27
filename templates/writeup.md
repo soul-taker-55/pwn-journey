@@ -1,18 +1,18 @@
-# Write-up: <عنوان الدرس / التحدي>
+# Write-up: <lesson / challenge title>
 
-> يكتبه المتعلّم ويرفعه بنفسه. هذا ما يبني الـ portfolio.
+> Written and committed by the learner. This builds the portfolio.
 
-## الملخّص
-<ماذا تعلّمت / ماذا اخترقت، في سطرين.>
+## Summary
+<What you learned / what you exploited, in two lines.>
 
-## الخطوات
+## Steps
 1.
 2.
 
-## الكود / الاستغلال
+## Code / Exploit
 ```python
 # exploit
 ```
 
-## الدرس المستفاد
-<أهم فكرة خرجت بها.>
+## Takeaway
+<The single most important idea you walked away with.>

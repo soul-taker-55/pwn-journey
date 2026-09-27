@@ -1,14 +1,14 @@
-# المرحلة 0 — الأساسيات (تهيئة البيئة + C/Assembly)
+# Phase 0 — Foundations (Environment + C/Assembly)
 
-**الهدف:** أن تقرأ كوداً بلغة Assembly وتفهم ماذا يفعل بالذاكرة. هذه هي الفجوة الحقيقية — كل شيء آخر تملكه.
-**المدة:** 4–6 أسابيع.
+**Goal:** read Assembly code and understand what it does to memory. This is the real gap — you already have everything else.
+**Duration:** 4–6 weeks.
 
-## الأقسام
-- `section-01-c-and-memory/` — لغة C مركّزةً على الذاكرة والمؤشّرات.
-- (لاحقاً) section-02 — بيئة GDB والمراقبة.
+## Sections
+- `section-01-c-and-memory/` — C focused on memory and pointers.
+- (later) section-02 — the GDB environment and watching memory.
 
-## بيئة العمل المطلوبة (مرّة واحدة)
-- نظام Ubuntu (افتراضي كافٍ).
-- `GDB` مع إضافة `pwndbg`.
+## Required environment (one time)
+- Ubuntu (a VM is enough).
+- `GDB` with the `pwndbg` extension.
 - `pwntools` (`pip install pwntools`).
-- المترجم `gcc`.
+- The `gcc` compiler.
