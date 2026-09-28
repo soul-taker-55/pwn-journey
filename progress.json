@@ -3,16 +3,62 @@
   "track": "PWN / Binary Exploitation",
   "started": "2026-09-27",
   "current": { "phase": 0, "section": 1, "lesson": "lesson-01-pointers" },
+  "status_legend": { "done": "✅", "in_progress": "🟡", "not_started": "⬜" },
   "phases": [
-    { "id": 0, "title": "Foundations — Environment + C/Assembly", "status": "in_progress",
-      "lessons": [
-        { "id": "lesson-01-pointers", "title": "Pointers", "status": "not_started",
-          "quiz_score": null, "lab_done": false, "writeup_done": false, "completed_on": null }
-      ] },
-    { "id": 1, "title": "Assembly & Computer Architecture", "status": "not_started", "lessons": [] },
-    { "id": 2, "title": "Classic Stack Exploitation", "status": "not_started", "lessons": [] },
-    { "id": 3, "title": "Bypassing Modern Mitigations", "status": "not_started", "lessons": [] },
-    { "id": 4, "title": "Heap Exploitation", "status": "not_started", "lessons": [] },
-    { "id": 5, "title": "Specialization + Portfolio", "status": "not_started", "lessons": [] }
+    {
+      "id": 0,
+      "title": "Foundations — Environment + C/Assembly",
+      "status": "in_progress",
+      "sections": [
+        {
+          "id": 1,
+          "title": "C and Memory",
+          "status": "in_progress",
+          "lessons": [
+            {
+              "id": "lesson-01-pointers",
+              "title": "Pointers",
+              "status": "not_started",
+              "lesson_read": false,
+              "lab_done": false,
+              "quiz_passed": false,
+              "quiz_score": null,
+              "quiz_max": 4,
+              "writeup_done": false,
+              "completed_on": null
+            },
+            {
+              "id": "lesson-02-arrays",
+              "title": "Arrays & memory layout",
+              "status": "planned",
+              "lesson_read": false,
+              "lab_done": false,
+              "quiz_passed": false,
+              "quiz_score": null,
+              "quiz_max": null,
+              "writeup_done": false,
+              "completed_on": null
+            },
+            {
+              "id": "lesson-03-malloc-free",
+              "title": "malloc / free",
+              "status": "planned",
+              "lesson_read": false,
+              "lab_done": false,
+              "quiz_passed": false,
+              "quiz_score": null,
+              "quiz_max": null,
+              "writeup_done": false,
+              "completed_on": null
+            }
+          ]
+        }
+      ]
+    },
+    { "id": 1, "title": "Assembly & Computer Architecture", "status": "not_started", "sections": [] },
+    { "id": 2, "title": "Classic Stack Exploitation", "status": "not_started", "sections": [] },
+    { "id": 3, "title": "Bypassing Modern Mitigations", "status": "not_started", "sections": [] },
+    { "id": 4, "title": "Heap Exploitation", "status": "not_started", "sections": [] },
+    { "id": 5, "title": "Specialization + Portfolio", "status": "not_started", "sections": [] }
   ]
 }
