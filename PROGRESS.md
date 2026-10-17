@@ -23,6 +23,19 @@ Detailed status per phase → section → lesson. Each lesson tracks four items:
 
 ## Phase 0 — Foundations 🟡
 
+### Section 00 — Environment Setup (Ubuntu) 🟡
+
+| Step | Status |
+|:---|:---:|
+| Ubuntu confirmed | ⬜ |
+| System updated | ⬜ |
+| Core tools (gcc, gdb, git, python3, checksec) | ⬜ |
+| pwndbg installed | ⬜ |
+| pwntools in venv | ⬜ |
+| Compiled test.c + watched in GDB | ⬜ |
+
+> Guide: [`section-00-setup/SETUP.md`](phases/phase-0-foundations/section-00-setup/SETUP.md)
+
 ### Section 01 — C and Memory 🟡
 
 | Lesson | 📖 Lesson | 🧪 Lab | ❓ Quiz (score) | ✍️ Writeup | Status |

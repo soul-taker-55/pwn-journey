@@ -2,7 +2,7 @@
   "learner": "soul-taker-55",
   "track": "PWN / Binary Exploitation",
   "started": "2026-09-27",
-  "current": { "phase": 0, "section": 1, "lesson": "lesson-01-pointers" },
+  "current": { "phase": 0, "section": 0, "step": "ubuntu-ready" },
   "status_legend": { "done": "✅", "in_progress": "🟡", "not_started": "⬜" },
   "phases": [
     {
@@ -10,6 +10,19 @@
       "title": "Foundations — Environment + C/Assembly",
       "status": "in_progress",
       "sections": [
+        {
+          "id": 0,
+          "title": "Environment Setup (Ubuntu)",
+          "status": "in_progress",
+          "steps": [
+            { "id": "ubuntu-ready",   "title": "Ubuntu confirmed",                 "done": false },
+            { "id": "system-updated", "title": "System updated",                   "done": false },
+            { "id": "core-tools",     "title": "gcc, gdb, git, python3, checksec", "done": false },
+            { "id": "pwndbg",         "title": "pwndbg installed",                 "done": false },
+            { "id": "pwntools",       "title": "pwntools in venv",                 "done": false },
+            { "id": "first-habit",    "title": "compiled test.c + watched in GDB", "done": false }
+          ]
+        },
         {
           "id": 1,
           "title": "C and Memory",
