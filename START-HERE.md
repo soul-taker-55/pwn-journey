@@ -9,7 +9,7 @@ Updated at the end of every session.
 - **Current phase:** 0 — Foundations (environment + C/Assembly)
 - **Section:** section-01 — C and memory
 - **Current lesson:** `lesson-01-pointers`
-- **Status:** lesson ready, not started yet.
+- **Status:** environment setup ✅ done (2026-10-18). Lesson ready, not started yet.
 
 ## My Next Step
 1. Open `phases/phase-0-foundations/section-01-c-and-memory/lesson-01-pointers/LESSON.md` and read it.
@@ -19,7 +19,7 @@ Updated at the end of every session.
 5. Write a short `writeup.md`.
 
 ## Before Anything (one time)
-Set up your environment: Ubuntu + tools (GDB with pwndbg, pwntools, gcc). Details in Phase 0.
+✅ Done — Ubuntu 24.04 + gcc, gdb+pwndbg, pwntools (venv), checksec. Activate the venv each session with the `pwn` alias (points to `~/pwn-venv`). See `phases/phase-0-foundations/section-00-setup/WHAT-WE-DID.md`.
 
 ---
 > When a session ends: update this file + `progress.json`, and write a short handoff note.

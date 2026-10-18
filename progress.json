@@ -2,7 +2,7 @@
   "learner": "soul-taker-55",
   "track": "PWN / Binary Exploitation",
   "started": "2026-09-27",
-  "current": { "phase": 0, "section": 0, "step": "ubuntu-ready" },
+  "current": { "phase": 0, "section": 1, "lesson": "lesson-01-pointers" },
   "status_legend": { "done": "✅", "in_progress": "🟡", "not_started": "⬜" },
   "phases": [
     {
@@ -13,14 +13,15 @@
         {
           "id": 0,
           "title": "Environment Setup (Ubuntu)",
-          "status": "in_progress",
+          "status": "done",
+          "completed_on": "2026-10-18",
           "steps": [
-            { "id": "ubuntu-ready",   "title": "Ubuntu confirmed",                 "done": false },
-            { "id": "system-updated", "title": "System updated",                   "done": false },
-            { "id": "core-tools",     "title": "gcc, gdb, git, python3, checksec", "done": false },
-            { "id": "pwndbg",         "title": "pwndbg installed",                 "done": false },
-            { "id": "pwntools",       "title": "pwntools in venv",                 "done": false },
-            { "id": "first-habit",    "title": "compiled test.c + watched in GDB", "done": false }
+            { "id": "ubuntu-ready",   "title": "Ubuntu confirmed",                 "done": true },
+            { "id": "system-updated", "title": "System updated",                   "done": true },
+            { "id": "core-tools",     "title": "gcc, gdb, git, python3, checksec", "done": true },
+            { "id": "pwndbg",         "title": "pwndbg installed",                 "done": true },
+            { "id": "pwntools",       "title": "pwntools in venv",                 "done": true },
+            { "id": "first-habit",    "title": "compiled test.c + watched in GDB", "done": true }
           ]
         },
         {

@@ -23,16 +23,18 @@ Detailed status per phase → section → lesson. Each lesson tracks four items:
 
 ## Phase 0 — Foundations 🟡
 
-### Section 00 — Environment Setup (Ubuntu) 🟡
+### Section 00 — Environment Setup (Ubuntu) ✅ (done 2026-10-18)
 
 | Step | Status |
 |:---|:---:|
-| Ubuntu confirmed | ⬜ |
-| System updated | ⬜ |
-| Core tools (gcc, gdb, git, python3, checksec) | ⬜ |
-| pwndbg installed | ⬜ |
-| pwntools in venv | ⬜ |
-| Compiled test.c + watched in GDB | ⬜ |
+| Ubuntu confirmed | ✅ |
+| System updated | ✅ |
+| Core tools (gcc, gdb, git, python3, checksec) | ✅ |
+| pwndbg installed | ✅ |
+| pwntools in venv | ✅ |
+| Compiled test.c + watched in GDB | ✅ |
+
+> See [`section-00-setup/WHAT-WE-DID.md`](phases/phase-0-foundations/section-00-setup/WHAT-WE-DID.md) for a plain explanation of every step.
 
 > Guide: [`section-00-setup/SETUP.md`](phases/phase-0-foundations/section-00-setup/SETUP.md)
 
